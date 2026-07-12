@@ -21,6 +21,12 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      # tauri-build needs icons/icon.ico to embed the Windows resource file.
+      # We keep only the SVG source in git (icons are gitignored), so generate
+      # them here — same step the release workflow uses.
+      - name: Generate icons
+        run: npm run tauri icon src-tauri/icons/icon.svg
+
       - name: Type-check frontend
         run: npx tsc --noEmit
 
