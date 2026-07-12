@@ -1,0 +1,41 @@
+# Node
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Rust / Tauri
+src-tauri/target/
+src-tauri/gen/
+
+# Generated icons (run `npm run tauri icon` to create these)
+src-tauri/icons/*.png
+src-tauri/icons/*.ico
+src-tauri/icons/*.icns
+
+# Bundled fonts (users add their own — see public/fonts/README.md)
+public/fonts/*.woff2
+public/fonts/*.woff
+public/fonts/*.ttf
+public/fonts/*.otf
+
+# Runtime config with real machine values (ship config.example.json instead)
+config.json
+**/ClaudeGauge/config.json
+
+# Secrets / env
+.env
+.env.*
+*.pem
+*.key
+
+# Internal planning / handoff docs (not for publication — remove these lines
+# if you deliberately want to publish them)
+ClaudeGauge-SPEC.md
+ClaudeGauge-TASK-*.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

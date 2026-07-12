@@ -1,0 +1,331 @@
+/* ---- LINE Seed Sans TH ----
+   Uses the locally installed font first (most Thai/LINE users have it),
+   then a bundled woff2 fallback in /public/fonts/ (see that folder's README). */
+@font-face {
+  font-family: "LINE Seed Sans TH";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local("LINE Seed Sans TH"), local("LINESeedSansTH"),
+    url("/fonts/LINESeedSansTH_W_Rg.woff2") format("woff2");
+}
+@font-face {
+  font-family: "LINE Seed Sans TH";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local("LINE Seed Sans TH Bold"), local("LINESeedSansTH_W_Bd"),
+    url("/fonts/LINESeedSansTH_W_Bd.woff2") format("woff2");
+}
+
+:root {
+  --font: "LINE Seed Sans TH", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --ok: #35c759;
+  --warn: #ffd60a;
+  --danger: #ff453a;
+
+  /* theme: DARK (default) */
+  --bg: rgba(18, 20, 26, 0.86);
+  --border: rgba(255, 255, 255, 0.10);
+  --text: #f2f3f5;
+  --muted: #8b91a0;
+  --accent: #7aa2ff;
+  --track: rgba(255, 255, 255, 0.08);
+  --field: rgba(255, 255, 255, 0.06);
+  --field-hover: rgba(122, 162, 255, 0.14);
+  --cta-bg: rgba(122, 162, 255, 0.12);
+  --cta-bg-hover: rgba(122, 162, 255, 0.2);
+  --cta-border: rgba(122, 162, 255, 0.28);
+  --blur: 16px;
+  --text-shadow: none;
+}
+
+/* theme: LIGHT */
+:root[data-theme="light"] {
+  --bg: rgba(249, 250, 252, 0.92);
+  --border: rgba(0, 0, 0, 0.10);
+  --text: #1b1e26;
+  --muted: #667085;
+  --accent: #3b6ef5;
+  --track: rgba(0, 0, 0, 0.09);
+  --field: rgba(0, 0, 0, 0.05);
+  --field-hover: rgba(59, 110, 245, 0.12);
+  --cta-bg: rgba(59, 110, 245, 0.10);
+  --cta-bg-hover: rgba(59, 110, 245, 0.18);
+  --cta-border: rgba(59, 110, 245, 0.30);
+  --blur: 16px;
+  --text-shadow: none;
+}
+
+/* theme: GLASS */
+:root[data-theme="glass"] {
+  --bg: rgba(28, 30, 38, 0.42);
+  --border: rgba(255, 255, 255, 0.20);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.78);
+  --accent: #aac3ff;
+  --track: rgba(255, 255, 255, 0.16);
+  --field: rgba(255, 255, 255, 0.10);
+  --field-hover: rgba(255, 255, 255, 0.18);
+  --cta-bg: rgba(255, 255, 255, 0.12);
+  --cta-bg-hover: rgba(255, 255, 255, 0.22);
+  --cta-border: rgba(255, 255, 255, 0.30);
+  --blur: 22px;
+  --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html,
+body {
+  background: transparent;
+  overflow: hidden;
+  font-family: var(--font);
+  color: var(--text);
+}
+
+.widget {
+  width: 100vw;
+  height: 100vh;
+  padding: 11px 13px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  backdrop-filter: blur(var(--blur));
+  text-shadow: var(--text-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  cursor: grab;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    color 0.25s ease;
+}
+.widget:active {
+  cursor: grabbing;
+}
+
+/* ---- hero row ---- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  line-height: 1;
+}
+.used-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-icon {
+  width: 19px;
+  height: 19px;
+  color: var(--accent);
+  flex: none;
+}
+.used {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+}
+.used-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+  align-self: flex-end;
+  margin-bottom: 3px;
+}
+.hero-right {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.percent {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.gear,
+.palette {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+.gear:hover,
+.palette:hover {
+  color: var(--accent);
+  background: var(--field-hover);
+  opacity: 1;
+}
+.gear svg,
+.palette svg {
+  width: 15px;
+  height: 15px;
+}
+/* while editing, the gear is redundant with the open input */
+.widget.editing .gear {
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* ---- progress bar ---- */
+.bar-track {
+  width: 100%;
+  height: 7px;
+  background: var(--track);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 4px;
+  background: var(--ok);
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+/* ---- CTA (state A) ---- */
+.cta {
+  width: 100%;
+  padding: 6px 8px;
+  font-family: var(--font);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--cta-bg);
+  border: 1px solid var(--cta-border);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background-color 0.2s ease;
+}
+.cta:hover {
+  background: var(--cta-bg-hover);
+}
+.cta svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+/* ---- inline input ---- */
+.input-row {
+  display: none;
+  gap: 6px;
+}
+.input-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 5px 8px;
+  font-family: var(--font);
+  font-size: 12px;
+  color: var(--text);
+  background: var(--field);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  outline: none;
+}
+.input-row input:focus {
+  border-color: var(--accent);
+}
+.input-row button {
+  padding: 5px 11px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  color: #10141c;
+  background: var(--accent);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+/* ---- footer ---- */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.foot {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10.5px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.foot-icon {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  opacity: 0.85;
+}
+
+/* ---- state toggles (driven by JS classes on #widget) ---- */
+.widget .bar-track,
+.widget .input-row {
+  display: none;
+}
+.widget.has-limit .bar-track {
+  display: block;
+}
+.widget.has-limit .percent {
+  display: inline;
+}
+.widget.no-limit .percent {
+  display: none;
+}
+.widget.editing .cta {
+  display: none;
+}
+.widget.editing .input-row {
+  display: flex;
+}
+.widget.has-limit .cta {
+  display: none;
+}
+.foot.is-hidden {
+  visibility: hidden;
+}
+
+/* ---- bar color by threshold ---- */
+.widget.warn .bar-fill {
+  background: var(--warn);
+}
+.widget.danger .bar-fill {
+  background: var(--danger);
+}
+.widget.danger .percent {
+  color: var(--danger);
+}
+
+/* ---- special states ---- */
+.widget.idle {
+  opacity: 0.72;
+}
+.widget.error .used {
+  font-size: 16px;
+  color: var(--danger);
+}

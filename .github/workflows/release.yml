@@ -1,0 +1,56 @@
+name: release
+
+# Push a version tag (e.g. v0.1.0) and this builds the Windows bundle and
+# publishes a GitHub Release with the .msi attached — no manual build needed:
+#
+#   git tag v0.1.0
+#   git push --tags
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Generate icons
+        run: npm run tauri icon src-tauri/icons/icon.svg
+
+      # tauri-action runs the Tauri build and creates/updates the GitHub
+      # Release for this tag, uploading the .msi bundle as an asset.
+      - name: Build and release
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: "ClaudeGauge ${{ github.ref_name }}"
+          releaseBody: |
+            Download `ClaudeGauge_x.x.x_x64_en-US.msi` below and double-click to install.
+
+            Requirements: Windows 10/11, Node.js on your PATH, and prior Claude Code usage
+            (so there are local logs to read). Set a token limit to see the percentage —
+            see the README for details.
+          releaseDraft: false
+          prerelease: false

@@ -1,0 +1,29 @@
+[package]
+name = "claudegauge"
+version = "0.1.0"
+description = "Floating desktop widget showing Claude Code token usage"
+authors = ["ClaudeGauge contributors"]
+edition = "2021"
+rust-version = "1.77"
+
+# The binary is the CLI entrypoint too: `claudegauge start|stop|toggle`.
+[[bin]]
+name = "claudegauge"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-single-instance = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["clock"] }
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

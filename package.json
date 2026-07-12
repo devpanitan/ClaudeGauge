@@ -1,0 +1,44 @@
+{
+  "name": "claudegauge",
+  "version": "0.1.0",
+  "description": "Floating always-on-top desktop widget showing Claude Code token usage (Windows)",
+  "type": "module",
+  "license": "MIT",
+  "author": "ClaudeGauge contributors",
+  "keywords": [
+    "claude-code",
+    "tauri",
+    "widget",
+    "token-usage",
+    "ccusage",
+    "windows",
+    "desktop"
+  ],
+  "homepage": "https://github.com/devpanitan/ClaudeGauge#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devpanitan/ClaudeGauge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devpanitan/ClaudeGauge/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "app:dev": "tauri dev",
+    "app:build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.1.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.1.1"
+  }
+}

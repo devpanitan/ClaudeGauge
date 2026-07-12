@@ -1,0 +1,16 @@
+{
+  "_help": {
+    "pollInterval": "Seconds between ccusage polls. Minimum 5. Default 30.",
+    "mode": "Display mode. Currently 'full' (compact/ultra planned for M3).",
+    "theme": "Widget theme: 'dark', 'light', or 'glass'. Also cycled by the palette icon.",
+    "position": "Last window position in physical pixels. Updated automatically when you drag the widget.",
+    "limit": "Your 5-hour token cap. Set a positive number to show % + progress bar. Use null to hide % (Anthropic tunes the real limit server-side, so it is never guessed).",
+    "thresholds": "Percent at which the bar turns yellow (warn) and red (danger)."
+  },
+  "pollInterval": 30,
+  "mode": "full",
+  "theme": "dark",
+  "position": { "x": 1600, "y": 40 },
+  "limit": null,
+  "thresholds": { "warn": 60, "danger": 85 }
+}
