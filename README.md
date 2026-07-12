@@ -11,7 +11,7 @@ much is left, and when it resets.
 > 📸 **Screenshot / GIF goes here.** Drop a capture of the widget (ideally the
 > three themes, or a short GIF of it live) at `docs/screenshot.png` and replace
 > this line with:
- ![ClaudeGauge widget](docs/screenshot.png)
+![ClaudeGauge widget](docs/screenshot.png)
 
 ## What it shows
 
