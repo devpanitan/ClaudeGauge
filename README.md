@@ -4,14 +4,11 @@ A tiny always-on-top desktop widget for **Windows** that shows your **Claude
 Code** token usage for the current 5-hour window — how much you've used, how
 much is left, and when it resets.
 
+![ClaudeGauge widget](docs/screenshot.png)
+
 > ⚠️ **Not an official Anthropic tool.** All data stays on your machine.
 > ClaudeGauge only reads local usage via [`ccusage`](https://github.com/ryoppippi/ccusage);
 > it never sends anything off your computer and never touches your credentials.
-
-> 📸 **Screenshot / GIF goes here.** Drop a capture of the widget (ideally the
-> three themes, or a short GIF of it live) at `docs/screenshot.png` and replace
-> this line with:
-![ClaudeGauge widget](docs/screenshot.png)
 
 ## What it shows
 
